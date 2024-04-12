@@ -13,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: _buildUI(),
     );
   }
@@ -25,6 +26,8 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           _headerText(),
           _loginForm(),
+          _loginButton(),
+          _createAnAccountLink(),
         ],
       ),
     ));
@@ -63,10 +66,54 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: Form(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CustomFormField(),
+            CustomFormField(
+              hintText: "Email",
+              height: MediaQuery.sizeOf(context).height * 0.1,
+            ),
+            // Container(
+            //   height: MediaQuery.sizeOf(context).height * 0.05,
+            // ),
+            CustomFormField(
+              hintText: "Password",
+              height: MediaQuery.sizeOf(context).height * 0.1,
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _loginButton() {
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width,
+      child: MaterialButton(
+        onPressed: () {},
+        color: Theme.of(context).colorScheme.primary,
+        child: const Text(
+          'Login',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  Widget _createAnAccountLink() {
+    return Expanded(
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          const Text("dont have an account?"),
+          const Text(
+            "Sign Up",
+            style: TextStyle(fontWeight: FontWeight.w800),
+          ),
+        ],
       ),
     );
   }

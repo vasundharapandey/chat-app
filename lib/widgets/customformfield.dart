@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
-  const CustomFormField({super.key});
+  final String hintText;
+  final double height;
+  const CustomFormField({super.key, required this.hintText,required this.height});
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      autofocus: true,
-      // Add a decoration to provide visual feedback to the user
-      decoration: InputDecoration(
-        labelText: 'Username', // Change this to your desired label
-        hintText: 'Enter your username',
+    return SizedBox(
+      height: height,
+      child: TextFormField(
+        autofocus: true,
+        // Add a decoration to provide visual feedback to the user
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(),
+          hintText: hintText,
+        ),
       ),
     );
   }
